@@ -15,32 +15,39 @@ class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
   int _totalScore = 0;
   int _score =0;
+  int num0 =0 , num1=0 , num2=0 ;
 
   void _resetQuiz() {
     setState(() {
       _questionIndex = 0;
       _totalScore = 0;
+      num0=0; num1=0; num2=0;
     });
   }
 
   void answerQuestion(score) {
+
+    if(_questionIndex==0) num0 = score;
+    else if(_questionIndex==1) num1 = score;
+    else if(_questionIndex==2) num2 = score;
+
+
     _totalScore += score;
     setState(() {
 
       _questionIndex += 1;
     });
-    print(_questionIndex);
-    print(_totalScore);
-    print("Answer chosen !%n");
+
+
   }
 
   final List<Map<String, Object>> _question = [
     {
       'questionText': 'What\'s Your favorite Color ?',
       'answers': [
-        {'text': 'Black', 'score': 10},
+        {'text': 'Black', 'score': 900},
         {'text': 'Green', 'score': 20},
-        {'text': 'Blue', 'score': 30},
+        {'text': 'Blue', 'score': -30},
         {'text': 'Yellow', 'score': 40},
       ]
     },
@@ -48,18 +55,18 @@ class _MyAppState extends State<MyApp> {
       'questionText': 'What\'s Your favorite Animal ?',
       'answers': [
         {'text': 'Rabbit', 'score': 10},
-        {'text': 'Tiger', 'score': 30},
+        {'text': 'Tiger', 'score': -30},
         {'text': 'Elephant', 'score': 50},
-        {'text': 'Lion', 'score': 70,}
+        {'text': 'Lion', 'score': -700,}
       ]
     },
     {
       'questionText': 'What\'s Your favorite Instructor ?',
       'answers': [
         {'text': 'Sarra1', 'score':5},
-        {'text': 'Selma', 'score': 10},
+        {'text': 'Selma', 'score': -100},
         {'text': 'Hamza', 'score': 20},
-        {'text': 'Olfa', 'score': 30},
+        {'text': 'Olfa', 'score': 350},
       ]
     },
   ];
@@ -67,6 +74,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner :false ,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Quiz App"),
@@ -76,6 +84,22 @@ class _MyAppState extends State<MyApp> {
             child: _questionIndex < _question.length
                 ? Quiz(_question, _questionIndex, answerQuestion)
                 : Result(_resetQuiz, _totalScore)),
+        floatingActionButton: FloatingActionButton(
+          child :Icon(Icons.arrow_back_sharp),
+          onPressed: (){
+            if (_questionIndex==1) _totalScore =_totalScore- num0;
+            if (_questionIndex==2) _totalScore =_totalScore- num1;
+            if (_questionIndex==3) _totalScore =_totalScore- num2;
+
+
+
+            setState((){
+              if(_questionIndex >0) {
+                _questionIndex = _questionIndex - 1;
+              }
+            });
+          },
+        ),
       ),
     );
   }

@@ -10,12 +10,12 @@ class Result extends StatelessWidget {
   String get resultPhrase{
     String resultText;
 
-    if (resultScore >= 80){
-      resultText ="You are Gooooooooood!";
-    }else if( resultScore >= 50) {
-      resultText = "You are Goood!";
+    if (resultScore >= 600){
+      resultText ="You are Gooooooooood! your score is : $resultScore";
+    }else if( resultScore >= 100) {
+      resultText = "You are Goood! your score is : $resultScore";
     }else{
-      resultText="You are so bad!";
+      resultText="You are so bad! your score is : $resultScore";
     }
     return resultText;
 
@@ -24,11 +24,15 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+
       child: Column(
+
+        mainAxisAlignment :MainAxisAlignment.center,
         children: [
           Text(
             resultPhrase,
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
           ),
           FlatButton(
             child: Text(
