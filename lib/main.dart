@@ -1,4 +1,6 @@
 import 'package:app1/answer.dart';
+import 'package:app1/quiz.dart';
+import 'package:app1/result.dart';
 import 'package:flutter/material.dart';
 import 'question.dart';
 import 'answer.dart';
@@ -13,10 +15,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
 
+
+  void _resetQuiz(){
+    setState(() {
+      _questionIndex = 0;
+    });
+
+  }
   void answerQuestion() {
-    if (_questionIndex == 2) {
-      _questionIndex = -1;
-    }
+   // if (_questionIndex == 2) {
+     // _questionIndex = -1;
+    //}
+
     setState(() {
       _questionIndex += 1;
     });
@@ -48,18 +58,12 @@ class _MyAppState extends State<MyApp> {
       ),
       body: Container(
         width: double.infinity, //ell prend tt la longeur du colmn
-        child: Column(
-          children: <Widget>[
-            Question(_question[_questionIndex]['questionText']),
+        child: _questionIndex < _question.length
+            ?Quiz(_question, _questionIndex, answerQuestion)
 
-
-            ...(_question[_questionIndex]['answers'] as List<String>).map((answer){
-              return Answer(answerQuestion ,answer);
-            }).toList(), //Thhis an object not a list of String
-
-          ],
-        ),
-      ),
-    ));
+            :Result(_resetQuiz)
+    ),
+    ),
+    );
   }
 }
