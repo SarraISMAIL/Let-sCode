@@ -1,9 +1,8 @@
-import 'package:app1/answer.dart';
+
 import 'package:app1/quiz.dart';
 import 'package:app1/result.dart';
 import 'package:flutter/material.dart';
-import 'question.dart';
-import 'answer.dart';
+
 
 main() => runApp(MyApp());
 
@@ -39,28 +38,28 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'What\'s Your favorite Color ?',
       'answers': [
-        {'text': 'Black', 'score': 7},
-        {'text': 'Green', 'score': 200},
-        {'text': 'Blue', 'score': 8},
-        {'text': 'Yellow', 'score': 9},
+        {'text': 'Black', 'score': 10},
+        {'text': 'Green', 'score': 20},
+        {'text': 'Blue', 'score': 30},
+        {'text': 'Yellow', 'score': 40},
       ]
     },
     {
       'questionText': 'What\'s Your favorite Animal ?',
       'answers': [
         {'text': 'Rabbit', 'score': 10},
-        {'text': 'Tiger', 'score': 20},
-        {'text': 'Elephant', 'score': 5},
-        {'text': 'Lion', 'score': 5},
+        {'text': 'Tiger', 'score': 30},
+        {'text': 'Elephant', 'score': 50},
+        {'text': 'Lion', 'score': 70,}
       ]
     },
     {
       'questionText': 'What\'s Your favorite Instructor ?',
       'answers': [
-        {'text': 'Sarra1', 'score':1},
-        {'text': 'Selma', 'score': 6},
-        {'text': 'Hamza', 'score': 4},
-        {'text': 'Olfa', 'score': 6},
+        {'text': 'Sarra1', 'score':5},
+        {'text': 'Selma', 'score': 10},
+        {'text': 'Hamza', 'score': 20},
+        {'text': 'Olfa', 'score': 30},
       ]
     },
   ];
