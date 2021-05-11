@@ -1,4 +1,3 @@
-
 import 'package:app1/quiz.dart';
 import 'package:app1/result.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +10,10 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+Color  w =Colors.white;
+Color b =Colors.black;
 class _MyAppState extends State<MyApp> {
- var  w =Colors.white;
- var  b =Colors.black;
+
  bool isSwitched = false;
 
   int _questionIndex = 0;
@@ -29,19 +29,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void answerQuestion(score) {
-
-    if(_questionIndex==0) num0 = score;
-    else if(_questionIndex==1) num1 = score;
-    else if(_questionIndex==2) num2 = score;
-
+    if (_questionIndex == 0)
+      num0 = score;
+    else if (_questionIndex == 1)
+      num1 = score;
+    else if (_questionIndex == 2) num2 = score;
 
     _totalScore += score;
     setState(() {
 
       _questionIndex += 1;
     });
-
-
   }
 
   final List<Map<String, Object>> _question = [
@@ -87,6 +85,11 @@ class _MyAppState extends State<MyApp> {
               onChanged:(value){
                setState(() {
                  isSwitched = value;
+                  if (isSwitched== true){
+                    b=Colors.white; w=Colors.black;}
+                 if (isSwitched== false){
+                   b=Colors.black; w=Colors.white;}
+
                });
 
               },

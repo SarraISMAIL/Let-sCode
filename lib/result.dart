@@ -1,3 +1,4 @@
+import 'package:app1/main.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
@@ -11,11 +12,11 @@ class Result extends StatelessWidget {
     String resultText;
 
     if (resultScore >= 600){
-      resultText ="You are Gooooooooood! your score is : $resultScore";
+      resultText ="You are Awesome!" ;
     }else if( resultScore >= 100) {
-      resultText = "You are Goood! your score is : $resultScore";
+      resultText = "You are Goood! ";
     }else{
-      resultText="You are so bad! your score is : $resultScore";
+      resultText="You are so bad!";
     }
     return resultText;
 
@@ -26,12 +27,16 @@ class Result extends StatelessWidget {
     return Center(
 
       child: Column(
-
         mainAxisAlignment :MainAxisAlignment.center,
-        children: [
+        children:<Widget> [
+          Text("Your Score is :  $resultScore",
+            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color:b),
+            textAlign: TextAlign.center,
+
+          ),
           Text(
             resultPhrase,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color:b),
             textAlign: TextAlign.center,
           ),
           FlatButton(
