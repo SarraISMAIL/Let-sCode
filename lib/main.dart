@@ -12,9 +12,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+ var  w =Colors.white;
+ var  b =Colors.black;
+ bool isSwitched = false;
+
   int _questionIndex = 0;
   int _totalScore = 0;
-  int _score =0;
   int num0 =0 , num1=0 , num2=0 ;
 
   void _resetQuiz() {
@@ -78,12 +81,24 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Quiz App"),
+          actions: <Widget>[
+            Switch(
+              value: isSwitched,
+              onChanged:(value){
+               setState(() {
+                 isSwitched = value;
+               });
+
+              },
+            ),
+          ],
         ),
         body: Container(
             width: double.infinity, //ell prend tt la longeur du colmn
             child: _questionIndex < _question.length
                 ? Quiz(_question, _questionIndex, answerQuestion)
-                : Result(_resetQuiz, _totalScore)),
+                : Result(_resetQuiz, _totalScore) ,
+            color: w),
         floatingActionButton: FloatingActionButton(
           child :Icon(Icons.arrow_back_sharp),
           onPressed: (){
