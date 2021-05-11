@@ -13,21 +13,31 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
 
-  void answerQuestion(){
-    if (_questionIndex == 1){
-      _questionIndex = -1 ;
+  void answerQuestion() {
+    if (_questionIndex == 2) {
+      _questionIndex = -1;
     }
     setState(() {
-      _questionIndex+=1;
+      _questionIndex += 1;
     });
-    print ("$_questionIndex");
+    print("$_questionIndex");
     print("Answer chosen !%n");
-
   }
-  final _question = [
-    "What\'s Your favorite Color ?",
-    "What\'s Your favorite Animal ?"
+
+  final List<Map<String, Object>> _question = [
+    {'questionText':'What\'s Your favorite Color ?',
+      'answers':['Black', 'Green', 'Blue','Yellow']
+    },
+    {'questionText':'What\'s Your favorite Animal ?',
+      'answers':['Rabbit', 'Tiger', 'Elephant','Lion']
+    },
+    {'questionText':'What\'s Your favorite Instructor ?',
+      'answers':['Sarra_1', 'Sarra_2', 'Sarra_3','Sarra_4']
+    },
+
+
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +50,12 @@ class _MyAppState extends State<MyApp> {
         width: double.infinity, //ell prend tt la longeur du colmn
         child: Column(
           children: <Widget>[
-            Question(_question[_questionIndex]),
-            Answer(answerQuestion, "Answer 1 "),
-            Answer(answerQuestion, "Answer 2 "),
-            Answer(answerQuestion, "Answer 3 "),
-           // Answer((){}, "Answer 4 "),
+            Question(_question[_questionIndex]['questionText']),
+
+
+            ...(_question[_questionIndex]['answers'] as List<String>).map((answer){
+              return Answer(answerQuestion ,answer);
+            }).toList(), //Thhis an object not a list of String
 
           ],
         ),

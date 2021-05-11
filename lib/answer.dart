@@ -11,10 +11,10 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-       child : RaisedButton(
+       child : FlatButton(
             shape : RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
-            side: BorderSide(color: Colors.yellow),
+            side: BorderSide(color: Colors.greenAccent),
           ),
           color: Colors.lightBlueAccent,
           textColor: Colors.white,
